@@ -1,0 +1,16 @@
+function onEdit(e) {
+  let sheetEditedID = String(e.range.getSheet().getSheetId());
+  if (sheetEditedID == 1672373202) {
+    let col = String(e.range.getColumn());
+    let row = String(e.range.getRow());
+    if (col == 4) {
+      rowcompletion(row);
+    }
+  }
+}
+ function rowcompletion(row) {
+  let rangeForRowCompletion = SpreadsheetApp.getActiveSheet().getRange(`A${row}`)
+  let date = new Date();
+  let formatedDate = Utilities.formatDate(date, SpreadsheetApp.getActive().getSpreadsheetTimeZone(), "dd.MM.yyyy HH:mm:ss");
+  rangeForRowCompletion.setValue(formatedDate);
+ }
